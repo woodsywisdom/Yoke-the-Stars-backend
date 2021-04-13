@@ -1,0 +1,30 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "simple express server for tracking user profiles in Yoke the Stars app (a calculator for the game Dyson Sphere Program)",
+  "main": "app.js",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.12.3",
+    "nodemon": "^2.0.7",
+    "requests": "^0.3.0",
+    "validator": "^13.5.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node app.js",
+    "server": "nodemon app.js",
+    "server:debug": "nodemon --inspect app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/woodsywisdom/Yoke-the-Stars-backend.git"
+  },
+  "author": "Will MacCarty",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/woodsywisdom/Yoke-the-Stars-backend/issues"
+  },
+  "homepage": "https://github.com/woodsywisdom/Yoke-the-Stars-backend#readme"
+}
