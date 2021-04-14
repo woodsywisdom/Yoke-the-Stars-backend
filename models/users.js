@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 const uniqueValidator = require('mongoose-unique-validator');
 const crypto = require('crypto');
 const jwt = require('jsonwebtoken');
-const secret = require('../confix')
+const secret = require('../config/keys').secret;
 
 const UserSchema = mongoose.Schema({
     username: {
@@ -41,6 +41,19 @@ UserSchema.methods.validPassword = function(pw) {
     const hash = crypto.pbkdf2Sync(pw, this.salt, 10000, 512, 'sha512').toString('hex');
     return this.hash === hash;
 };
+
+UserSchema.methods.generateJWT = function() {
+    const today = new Date();
+    const exp = new Date(today);
+    exp.setDate(today.getDate() + 60);
+
+    return jwt.sign({
+        id: this._id,
+        username: this.username,
+        exp: parseInt(exp.getTime() / 1000)
+    }, secret);
+};
+
 
 mongoose.model('User', UserSchema);
 
