@@ -16,13 +16,6 @@ var ComplexSchema = new mongoose.Schema({
 
 ComplexSchema.plugin(uniqueValidator, {message: 'is already taken'});
 
-ComplexSchema.pre('validate', function(next){
-  if(!this.slug)  {
-    this.slugify();
-  }
-
-  next();
-});
 
 ComplexSchema.methods.slugify = function() {
   this.slug = slug(this.title) + '-' + (Math.random() * Math.pow(36, 6) | 0).toString(36);
